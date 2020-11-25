@@ -5,7 +5,7 @@
 - Developers - Harith, John
 
 ## Software Methodology Considerations
-Methodologies considered
+#### Methodologies considered
 1. Agile
 2. Waterfall
 3. Spiral 
@@ -29,16 +29,28 @@ The Spiral Model has 4 phases which are identification, design, construct & buil
 
 ## What are the pros and cons of these methodologies?
 #### Agile
+
 - Pros
   - Not as dependant on paperwork
   - Offers more opportunities for experimentation
   - Can adapt to change better and faster
   - More stakeholder engagement
 - Cons
+
 #### Waterfall
+
 - Pros
+  - Project requirements are agreed upon in the first phase, so planning and scheduling is simple and clear.
+  - With a fully laid out project schedule, you can give accurate estimates for your project cost, resources and deadlines.
+  - It’s easy to measure progress as you move through the phases and hit milestones.
+  - Customers aren’t perpetually adding new requirements to the project, which can delay production.  
 - Cons        
+  - It can be difficult for customers to articulate all of their needs at the beginning of the project.
+  - If the customer is dissatisfied with the product in the verification phase, it can be very costly to go back and design the code again.
+  - A linear project plan is rigid, and lacks flexibility for adapting to unexpected events.
+  
 #### Spiral
+
 - Pros
   - The constantly changing requirements can be accommodated.
   - Allows extensive use of prototypes.
