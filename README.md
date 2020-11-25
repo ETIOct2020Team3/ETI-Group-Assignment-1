@@ -36,6 +36,11 @@ The Spiral Model has 4 phases which are identification, design, construct & buil
   - Can adapt to change better and faster
   - More stakeholder engagement
 - Cons
+  - Difficult for new team members to understand due to lack of documentation.
+  - Difficult to measure progress between cycles.
+  - Cost of the project may not be known initially.
+  - Difficult to work on bigger features
+
 
 #### Waterfall
 
