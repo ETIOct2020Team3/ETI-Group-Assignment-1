@@ -72,4 +72,6 @@ The Spiral Model has 4 phases which are identification, design, construct & buil
  3. Scope not defined
  
  ## Chosen Methodology
- #### Based on these considerations, we pick Iterative
+ #### Based on these considerations, we pick
+ ### Iterative methodology
+ 
