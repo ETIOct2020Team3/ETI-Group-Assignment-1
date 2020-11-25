@@ -66,3 +66,10 @@ The Spiral Model has 4 phases which are identification, design, construct & buil
 - Pros
 - Cons
  
+ ## Considerations for this project
+ 1. Prioritise testing
+ 2. Prepared for unexpected changes 
+ 3. Scope not defined
+ 
+ ## Chosen Methodology
+ #### Based on these considerations, we pick Iterative
