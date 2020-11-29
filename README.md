@@ -76,7 +76,7 @@ Transition - The final phase of the model where the system is delivered in the o
 
 #### Iterative
 - Pros
-  - Working functionality can be produced quickly and early in the life cycly
+  - Working functionality can be produced quickly and early in the life cycle
   - Results are obtained periodically
   - Progress is easily measured
   - Less costly to change project scope or requirements
@@ -96,6 +96,9 @@ Transition - The final phase of the model where the system is delivered in the o
  3. Scope not defined
  
  ## Chosen Methodology
- #### Based on these considerations, we pick
  ### Iterative methodology
- 
+ Reasons we pick Iterative Methodology:
+  - Debugging and testing after every iteration is critical as we need to prioritise testing for this project.
+  - After every iteration, the team would be able to measure their progress easily.
+  - As it is less costly to change the project scope or requirements, we would be prepared for unexpected changes to this project.
+
