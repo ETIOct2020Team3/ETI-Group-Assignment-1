@@ -26,6 +26,13 @@ The waterfall model emphasizes that a logical progression of steps be taken thro
 The Spiral Model has 4 phases which are identification, design, construct & build and evaluation and risk analysis. The model combines the idea of iterative development with the systematic, controlled aspects of waterfall method. So, it is similar to the waterfall model but with a higher emphasis on the risk analysis. This model also allows incremental releases/refining of the product following each iteration around the spiral.
 
 #### Iterative
+In the Iterative model, development begins by specifying and implementing just a small portion of the software .From there, the primary implementation is progressively evolved through each version until the desired system is completely implemented and ready to deploy. 
+
+This model can be broken down into 4 different phases:
+Inception - This phase is where the project’s functional and non-functional requirements and scope is defined at a high detail but with roughly enough detail that the required work to be completed is estimable
+Elaboration - This phase is where non-functional requirements are fulfilled and a working architecture is delivered
+Construction - Implementation of the software begins here incrementally by filling in the working architecture with production ready code
+Transition - The final phase of the model where the system is delivered in the operating environment
 
 ## What are the pros and cons of these methodologies?
 #### Agile
@@ -69,7 +76,19 @@ The Spiral Model has 4 phases which are identification, design, construct & buil
 
 #### Iterative
 - Pros
+  - Working functionality can be produced quickly and early in the life cycly
+  - Results are obtained periodically
+  - Progress is easily measured
+  - Less costly to change project scope or requirements
+  - Debugging and testing with smaller iterations is much easier
+
 - Cons
+  - More attention to management is required
+  - Not suitable for smaller projects
+  - Issues in system architecture or design issues may arise because not all of the project/software requirements are gathered in the beginning of the life cycle
+  - Proper risk analysis requires a higher skill floor
+  - Requires more resources than other models such as the waterfall model
+
  
  ## Considerations for this project
  1. Prioritise testing
