@@ -1,5 +1,4 @@
-## Team Makeup 
-
+## Team Makeup 👦👦👦👩
 - Scrum Master - Hannanis
 - QA - Guhesh
 - Developers - Harith, John
