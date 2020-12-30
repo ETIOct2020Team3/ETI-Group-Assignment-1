@@ -1,5 +1,16 @@
+class World:
+    def __init__(self):
+        world_map = [['T', ' ', ' ', ' ', ' ', ' ', ' ', ' '],\
+                     [' ', ' ', ' ', 'T', ' ', ' ', ' ', ' '],\
+                     [' ', ' ', ' ', ' ', ' ', 'T', ' ', ' '],\
+                     [' ', 'T', ' ', ' ', ' ', ' ', ' ', ' '],\
+                     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],\
+                     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],\
+                     [' ', ' ', ' ', ' ', 'T', ' ', ' ', ' '],\
+                     [' ', ' ', ' ', ' ', ' ', ' ', ' ', 'K']]
+
 class Player:  
-    def __init__(self):   # Defining parameters
+    def __init__(self):   
         self.name = 'The Hero'
         self.damage = '2-4'
         self.minDamage = 2
