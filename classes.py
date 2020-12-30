@@ -25,6 +25,9 @@ class Player:
 
     def is_alive(self): 
         return self.hp > 0
+    
+     def minusOneDay(self):
+        Player.day -= 1
 
 class SavedPlayer: 
     def __init__(self):   
