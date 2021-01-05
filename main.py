@@ -1,4 +1,5 @@
 import Menus
+import outdoorMenu
 from classes import *
 
 
@@ -79,8 +80,10 @@ def Main():
             option = print_Menu(Menus.town_Menu)
             if option == 1:
                 print_heroStats()
-            if option == 2:
+            elif option == 2:
                 print_Map()
+            elif option == 6:
+                outdoorMenu.exitGame()
             else:
                 print("Other options are still under development. Please select option 2.")
         
