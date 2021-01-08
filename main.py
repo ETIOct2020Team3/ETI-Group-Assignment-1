@@ -1,7 +1,7 @@
 import Menus
 import outdoorMenu
-from classes import *
-
+import combatMenuFunctions
+import classes
 
 # Prints the input menu based on the user's choice
 
