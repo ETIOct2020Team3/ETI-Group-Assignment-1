@@ -69,7 +69,7 @@ def attack():
     playerDamage = random.randint(Rat.damage_min,Rat.damage_max)
     ratDefenceLeft = Rat.defence - playerDamage
     playerDefenceLeft = Player.defence - ratDamage
-    if ratDefenceLeft > 0:
+    if ratDefenceLeft > 0:  
         Rat.defence = ratDefenceLeft
         print("You deal {} damage to the Rat".format(playerDamage))
         print("Ouch! The Rat hit you for {} damage!".format(ratDamage))
@@ -104,13 +104,10 @@ def attack():
                 print("Damage: {}".format(Rat.damage))
                 print("Defence: {}".format(Rat.defence))
                 print("HP: {}".format(Rat.hp))
-                if Player.hp > 0:
-                    print("player is stil alive")
-                else:
-                    print("Game Over")
+                if Player.hp <= 0:
+                    print("You are dead. Game is over.")
         else:
-            #function if rat dies
-            print("Rat died")
+            print("Yay you killed the {}!".format(Rat.name))
 
 
     

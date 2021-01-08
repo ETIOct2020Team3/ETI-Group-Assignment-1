@@ -62,8 +62,8 @@ def print_heroStats():
 def new_Game():
     global world, hero, day
     day = 1
-    world = World()
-    hero = Player()
+    world = classes.World()
+    hero = classes.Player()
 
 def Main():
     print('Welcome to Ratventure!')
