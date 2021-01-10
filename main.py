@@ -61,6 +61,10 @@ def print_heroStats():
     print("Defence : {}".format(hero.defence))
     print("HP : {}".format(hero.hp))
 
+def rest():
+    hero.day += 1
+    hero.hp = 20
+    print('You are fully healed.')
     
 def new_Game():
     global world, hero
@@ -85,7 +89,7 @@ def Main():
     start_option = print_Menu(Menus.start_Menu)
     if start_option == 1:
         new_Game()
-    if start_option == 2:
+    elif start_option == 2:
         resume_Game()
     else:
         print("Other options are still under development. Option 1 will be selected automatically.")
@@ -99,6 +103,8 @@ def Main():
                 print_heroStats()
             elif option == 2:
                 print_Map()
+            elif option == 4:
+                rest()
             elif option == 5:
                 save_Game()
             elif option == 6:
