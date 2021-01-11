@@ -46,23 +46,6 @@ class SavedPlayer:
     def is_alive(self): 
         return self.hp > 0
 
-class ResumePlayer:  
-    def __init__(self):   
-        self.name = 'ResumeData'
-        self.damage = 'ResumeData' 
-        self.minDamage = 2
-        self.maxDamage = 4
-        self.defence = 'ResumeData' 
-        self.hp = 'ResumeData' 
-        self.day = 'ResumeData' 
-        self.positionX = 0
-        self.positionY = 0
-        self.location = 'You are in a Town'
-        self.locationTag = 'H'
-
-    def is_alive(self): 
-        return self.hp > 0
-
 class Rat(object): 
     def __init__(self):
         self.name = 'Rat'

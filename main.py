@@ -3,8 +3,12 @@ import outdoorMenu
 import combatMenuFunctions
 import classes
 
-# Prints the input menu based on the user's choice
+try:
+    import cPickle as pickle
+except ModuleNotFoundError:
+    import pickle
 
+# Prints the input menu based on the user's choice
 def print_Menu(menu):
     for x in range(len(menu)):
         print('{}) {}'.format(x + 1, menu[x]))
@@ -23,11 +27,10 @@ def print_Day():
     if location == " ":
         description = "You are out in the open."
         
-    print('Day {}: {}'.format(day, description))
+    print('Day {}: {}'.format(hero.day, description))
     return location
     
-def print_Map():
-    
+def print_Map():   
     #Iterating through world object's worldmap nested list
     for x in range(8):
         #Print a header for each nested list that exists
@@ -51,7 +54,7 @@ def print_Map():
         print("|")
     #Print a closing footer
     print("+---+---+---+---+---+---+---+---+")
-    
+
 def print_heroStats():
     #Printing hero stats
     print("Name : {}".format(hero.name))
@@ -59,21 +62,37 @@ def print_heroStats():
     print("Defence : {}".format(hero.defence))
     print("HP : {}".format(hero.hp))
 
+    
 def new_Game():
     global world, hero, day
     day = 1
     world = classes.World()
     hero = classes.Player()
+    
+def save_Game():
+    output = open('Save.txt','wb')
+    pickle.dump(world, output, -1)
+    pickle.dump(hero, output, -1)
+    output.close()
 
+def resume_Game():
+    input = open('Save.txt', 'rb')
+    global world, hero
+    world = pickle.load(input)
+    hero = pickle.load(input)
+    
 def Main():
     print('Welcome to Ratventure!')
     print('----------------------')
     start_option = print_Menu(Menus.start_Menu)
     if start_option == 1:
         new_Game()
+    if start_option == 2:
+        resume_Game()
     else:
         print("Other options are still under development. Option 1 will be selected automatically.")
         new_Game()
+        
     while True:
         location = print_Day()
         if location == "T":
@@ -82,6 +101,8 @@ def Main():
                 print_heroStats()
             elif option == 2:
                 print_Map()
+            elif option == 5:
+                save_Game()
             elif option == 6:
                 outdoorMenu.exitGame()
             else:
