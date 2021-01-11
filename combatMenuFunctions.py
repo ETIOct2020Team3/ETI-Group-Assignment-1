@@ -40,7 +40,7 @@ def UserMovementOption(hero, world):
                 
 def attack():
     Rat = classes.Rat()
-    Player = hero()
+    Player = classes.Player()
     ratDamage = random.randint(Player.minDamage,Player.maxDamage)
     playerDamage = random.randint(Rat.damage_min,Rat.damage_max)
     ratDefenceLeft = Rat.defence - playerDamage
