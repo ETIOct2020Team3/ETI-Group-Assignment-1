@@ -1,6 +1,7 @@
 import Menus
 import outdoorMenu
-from classes import *
+import combatMenuFunctions
+import classes
 
 try:
     import cPickle as pickle
@@ -63,9 +64,10 @@ def print_heroStats():
 
     
 def new_Game():
-    global world, hero
-    world = World()
-    hero = Player()
+    global world, hero, day
+    day = 1
+    world = classes.World()
+    hero = classes.Player()
     
 def save_Game():
     output = open('Save.txt','wb')
