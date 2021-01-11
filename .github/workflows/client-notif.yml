@@ -10,9 +10,10 @@
     body: Build job of ${{github.repository}} completed successfully!
     # Read file contents as body:
     body: file://README.md
-    to: ict.eti.consultants@gmail.com
+    to: nurhannanis@gmail.com #ict.eti.consultants@gmail.com
     from: ETIOCT2020Team3 # <user@example.com>
-    # Optional carbon copy recipients
+   
+   # Optional carbon copy recipients
     cc: kyloren@starkiller.com,leia@alderaan.com
     # Optional blind carbon copy recipients
     bcc: r2d2@jakku.com,hansolo@milleniumfalcon.com
