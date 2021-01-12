@@ -71,45 +71,22 @@ def rest():
     print('You are fully healed.')
     
 def new_Game():
-    global world, hero, rat
+    global world, hero
     world = classes.World()
     hero = classes.Player()
-    rat = classes.Rat()
     
 def save_Game():
     output = open('Save.txt','wb')
     pickle.dump(world, output, -1)
     pickle.dump(hero, output, -1)
-    pickle.dump(rat, output, -1)
     output.close()
     print('Game saved.')
-    
 def resume_Game():
     input = open('Save.txt', 'rb')
-    global world, hero, rat
+    global world, hero
     world = pickle.load(input)
     hero = pickle.load(input)
-    rat = pickle.load(input)
     
-def encounter_Rat():
-    print('Encounter! - Rat')
-    print('Damage: {},-{}'.format(rat.damage_min, rat.damage_max))
-    print('Defence: {}'.format(rat.defence))
-    option = print_Menu(Menus.combat_Menu)
-    
-    if option == 1:
-        combat.attack(rat, hero)
-        
-    elif option == 2:
-        rat.hp = 8
-        option = print_Menu(Menus.outdoor_Menu)
-        if option == 3:
-            print_Map()
-            print('W = up; A = left; S = down; D = right')
-            combat.UserMovementOption(hero, world)
-        else:
-            encounter_Rat()
-            
 def Main():
     print('Welcome to Ratventure!')
     print('----------------------')
@@ -133,6 +110,8 @@ def Main():
                 print_Map()
                 print('W = up; A = left; S = down; D = right')
                 combat.UserMovementOption(hero, world)
+                print_Map()
+                print(hero.positionX, hero.positionY)
             elif option == 4:
                 rest()
             elif option == 5:
@@ -141,18 +120,16 @@ def Main():
                 sys.exit()
                 
         elif location == ' ':
-            if rat.hp <= 0:
-                option = print_Menu(Menus.outdoor_Menu)
-                if option == 1:
-                    view_Character()
-                elif option == 2:
-                    print_Map()
-                elif option == 3:
-                    print_Map()
-                    combat.UserMovementOption(hero, world)
-                    rat.hp = 8
-                elif option == 4:
-                    sys.exit()
-            else:
-                encounter_Rat()
+            option = print_Menu(Menus.outdoor_Menu)
+            if option == 1:
+                view_Character()
+            elif option == 2:
+                print_Map()
+            elif option == 3:
+                print_Map()
+                combat.UserMovementOption(hero, world)
+                print(hero.positionX, hero.positionY)
+                print_Map()
+            elif option == 4:
+                sys.exit()
 Main()

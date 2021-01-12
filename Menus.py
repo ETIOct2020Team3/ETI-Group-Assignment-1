@@ -17,7 +17,3 @@ outdoor_Menu = ["View Character",\
              "View Map",\
              "Move",\
              "Exit Game"]
-
-combat_Menu = ["Attack",\
-             "Run"
-               ]
