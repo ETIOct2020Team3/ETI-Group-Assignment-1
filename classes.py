@@ -8,6 +8,7 @@ class World:
                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],\
                      [' ', ' ', ' ', ' ', 'T', ' ', ' ', ' '],\
                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', 'K']]
+        self.day = 1
 
 class Player:  
     def __init__(self):   
@@ -17,7 +18,6 @@ class Player:
         self.maxDamage = 4
         self.defence = 1
         self.hp = 20
-        self.day = 1
         self.positionX = 0
         self.positionY = 0
         self.location = 'You are in a Town'
