@@ -1,7 +1,7 @@
 import Menus
-import outdoorMenu
-import combatMenuFunctions
+import combatMenuFunctions as combat
 import classes
+import sys
 
 try:
     import cPickle as pickle
@@ -27,7 +27,7 @@ def print_Day():
     if location == " ":
         description = "You are out in the open."
         
-    print('Day {}: {}'.format(hero.day, description))
+    print('Day {}: {}'.format(world.day, description))
     return location
     
 def print_Map():   
@@ -36,26 +36,29 @@ def print_Map():
         #Print a header for each nested list that exists
         print("+---+---+---+---+---+---+---+---+")
         for y in range(8):
-
             #Blank variable to store the Town, Orb or Hero letter icons
             icon= "   "
             #If statements to store the letter icons that is in the current world.worldmap nested list index
             if world.world_map[x][y] == 'T':
                 icon = ' T '
-                if x == hero.positionX & y == hero.positionY:
+                if x == hero.positionX and y == hero.positionY:
                     icon = 'H/T'
-            if world.world_map[x][y] == 'K':
+                    
+            elif world.world_map[x][y] == 'K':
                 icon = ' K '
-            if world.world_map[x][y] == 'H':
-                icon = ' H'
+                if x == hero.positionX and y == hero.positionY:
+                    icon = 'K/T'
+
+            elif x == hero.positionX and y == hero.positionY:
+                icon= ' H '
             #By default python will end each print with a new line
             #end='' replaces the default parameter of '\n' so it does not end with a new line
             print("|{}".format(icon), end='')
         print("|")
     #Print a closing footer
     print("+---+---+---+---+---+---+---+---+")
-
-def print_heroStats():
+    
+def view_Character():
     #Printing hero stats
     print("Name : {}".format(hero.name))
     print("Damage : {}".format(hero.damage))
@@ -63,13 +66,12 @@ def print_heroStats():
     print("HP : {}".format(hero.hp))
 
 def rest():
-    hero.day += 1
+    world.day += 1
     hero.hp = 20
     print('You are fully healed.')
     
 def new_Game():
-    global world, hero, day
-    day = 1
+    global world, hero
     world = classes.World()
     hero = classes.Player()
     
@@ -78,7 +80,7 @@ def save_Game():
     pickle.dump(world, output, -1)
     pickle.dump(hero, output, -1)
     output.close()
-
+    print('Game saved.')
 def resume_Game():
     input = open('Save.txt', 'rb')
     global world, hero
@@ -93,25 +95,41 @@ def Main():
         new_Game()
     elif start_option == 2:
         resume_Game()
-    else:
-        print("Other options are still under development. Option 1 will be selected automatically.")
-        new_Game()
+    elif start_option == 3:
+        sys.exit()
         
     while True:
         location = print_Day()
         if location == "T":
             option = print_Menu(Menus.town_Menu)
             if option == 1:
-                print_heroStats()
+                view_Character()
             elif option == 2:
                 print_Map()
+            elif option == 3:
+                print_Map()
+                print('W = up; A = left; S = down; D = right')
+                combat.UserMovementOption(hero, world)
+                print_Map()
+                print(hero.positionX, hero.positionY)
             elif option == 4:
                 rest()
             elif option == 5:
                 save_Game()
             elif option == 6:
-                outdoorMenu.exitGame()
-            else:
-                print("Other options are still under development. Please select option 2.")
-        
+                sys.exit()
+                
+        elif location == ' ':
+            option = print_Menu(Menus.outdoor_Menu)
+            if option == 1:
+                view_Character()
+            elif option == 2:
+                print_Map()
+            elif option == 3:
+                print_Map()
+                combat.UserMovementOption(hero, world)
+                print(hero.positionX, hero.positionY)
+                print_Map()
+            elif option == 4:
+                sys.exit()
 Main()

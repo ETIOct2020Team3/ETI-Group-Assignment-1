@@ -12,3 +12,8 @@ town_Menu = ["View Character",\
              "Rest",\
              "Save Game",\
              "Exit Game"]
+
+outdoor_Menu = ["View Character",\
+             "View Map",\
+             "Move",\
+             "Exit Game"]
