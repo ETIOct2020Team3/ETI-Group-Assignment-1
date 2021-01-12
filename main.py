@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
 import Menus
 import combatMenuFunctions as combat
 import classes
@@ -137,4 +134,3 @@ def Main():
                 sys.exit()
         
 Main()
->>>>>>> Stashed changes
