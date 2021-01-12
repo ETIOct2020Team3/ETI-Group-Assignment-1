@@ -49,10 +49,20 @@ class SavedPlayer:
 class Rat(object): 
     def __init__(self):
         self.name = 'Rat'
-        self.damage = '1-3'
         self.damage_min = 1 
         self.damage_max = 3
+        self.damage = str(self.damage_min)+'-'+str(self.damage_max)
         self.defence = 1
         self.hp = 8 
         self.location = 'a2'
+
+class Rat_King(object): 
+    def __init__(self):
+        self.name = 'Rat King'
+        self.damage_min = 8
+        self.damage_max = 12
+        self.damage = str(self.damage_min)+'-'+str(self.damage_max)
+        self.defence = 5
+        self.hp = 25 
+        self.location = 'b4'
     
