@@ -29,7 +29,9 @@ def print_Day():
         
     print('Day {}: {}'.format(world.day, description))
     return location
-    
+def exitGame():
+    sys.exit(0)
+
 def print_Map():   
     #Iterating through world object's worldmap nested list
     for x in range(8):
@@ -119,7 +121,7 @@ def Main():
     elif start_option == 2:
         resume_Game()
     elif start_option == 3:
-        sys.exit()
+        exitGame()
         
     while True:
         location = print_Day()
@@ -138,7 +140,7 @@ def Main():
             elif option == 5:
                 save_Game()
             elif option == 6:
-                sys.exit()
+                exitGame()
                 
         elif location == ' ':
             if rat.hp <= 0:
@@ -152,7 +154,7 @@ def Main():
                     combat.UserMovementOption(hero, world)
                     rat.hp = 8
                 elif option == 4:
-                    sys.exit()
+                    exitGame()
             else:
                 encounter_Rat()
 Main()
