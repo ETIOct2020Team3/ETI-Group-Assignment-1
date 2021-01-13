@@ -1,9 +1,9 @@
   on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]   
-  
+    push:
+      branches: [ main ]
+    pull_request:
+      branches: [ main ]   
+
   
   name: Send mail
   uses: dawidd6/action-send-mail@v2
