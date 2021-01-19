@@ -7,7 +7,7 @@
   jobs:
     build:
        runs-on: ubuntu-latest
-       steps:
+        steps:
         -name: Send mail
         -uses: dawidd6/action-send-mail@v2
         with:
@@ -18,10 +18,9 @@
             subject: Github Actions job result
             # Literal body:
             body: Build job of ${{github.repository}} completed successfully!
-            # Read file contents as body:
-            body: file://README.md
+            # Read file contents as body:      
             to: nurhannanis@gmail.com #ict.eti.consultants@gmail.com
-            from: ETIOCT2020Team3 # <user@example.com>
+            from: nurhannanis@gmail.com # <user@example.com>
 
            # Optional carbon copy recipients
             cc: kyloren@starkiller.com,leia@alderaan.com
