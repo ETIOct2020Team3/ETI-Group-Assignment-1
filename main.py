@@ -174,4 +174,5 @@ def Main():
                 encounter_Rat()
 
 
-Main()
+if __name__ == "__main__":
+   Main()

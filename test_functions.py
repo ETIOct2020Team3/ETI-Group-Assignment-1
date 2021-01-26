@@ -1,11 +1,11 @@
 import pytest
 import main
-import test_base
+from test_base import *
 from unittest.mock import patch
 from unittest import TestCase
 
 
-mock = Mock()
+
  # exit game test
 
 
@@ -23,14 +23,12 @@ mock = Mock()
 #     assert pytest_wrapped_e.type != SystemExit
 #     assert pytest_wrapped_e.value.code !=0      
 
-# @mock.pa
-# def test_rest():
-#         value= main.rest()
-#         assert value.hero.hp == 20
 
-def test_main():
-        main.input = lambda : 1   
-        output = main.Main()
-        assert output =="hello"
+def test_rest():
+    value = main.rest()
+    assert hero.hp == 20
+
+
+
 
 
