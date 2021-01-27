@@ -113,6 +113,8 @@ def encounter_Rat():
             print_Map()
             print('W = up; A = left; S = down; D = right')
             combat.UserMovementOption(hero, world)
+        elif option == 4:
+            exitGame()
         else:
             encounter_Rat()
             
