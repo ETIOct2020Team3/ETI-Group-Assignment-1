@@ -61,7 +61,7 @@ def print_Map():
             elif world.world_map[x][y] == 'K':
                 icon = ' K '
                 if x == hero.positionX and y == hero.positionY:
-                    icon = 'K/T'
+                    icon = 'H/K'
 
             elif world.world_map[x][y] == "T/O":
                 icon = "T/O"
@@ -88,10 +88,11 @@ def rest():
     print('You are fully healed.')
     
 def new_Game():
-    global world, hero, rat
+    global world, hero, rat,ratKing
     world = randomOrb(classes.World())
     hero = classes.Player()
     rat = classes.Rat()
+    ratKing = classes.Rat_King()
     
 def save_Game():
     output = open('Save.txt','wb')
@@ -103,16 +104,19 @@ def save_Game():
     
 def resume_Game():
     input = open('Save.txt', 'rb')
-    global world, hero, rat
+    global world, hero, rat, ratKing
     world = pickle.load(input)
     hero = pickle.load(input)
     rat = pickle.load(input)
+    ratKing = pickle.load(input)
     
 def encounter_Rat():
-    print('Encounter! - Rat')
-    print('Damage: {},-{}'.format(rat.damage_min, rat.damage_max))
-    print('Defence: {}'.format(rat.defence))
-    option = print_Menu(Menus.combat_Menu)
+    if rat.hp>0:
+        print('Encounter! - {}'.format(rat.name))
+        print('Damage: {},{}'.format(rat.damage_min, rat.damage_max))
+        print('Defence: {}'.format(rat.defence))
+        print("HP: {}".format(rat.hp))
+        option = print_Menu(Menus.combat_Menu)
     
     if option == 1:
         combat.attack(rat, hero)
@@ -124,9 +128,30 @@ def encounter_Rat():
             print_Map()
             print('W = up; A = left; S = down; D = right')
             combat.UserMovementOption(hero, world)
+        elif option == 4:
+            exitGame()
         else:
             encounter_Rat()
             
+def encounter_RatKing():
+    if rat.hp>0:
+        print('Encounter! - {}'.format(ratKing.name))
+        print('Damage: {},{}'.format(ratKing.damage_min, ratKing.damage_max))
+        print('Defence: {}'.format(ratKing.defence))
+        print("HP: {}".format(ratKing.hp))
+        option = print_Menu(Menus.combat_Menu)
+    
+    if option == 1:
+        combat.attack(ratKing, hero)
+        
+    elif option == 2:
+        option = print_Menu(Menus.outdoor_Menu)
+        if option == 3:
+            print_Map()
+            print('W = up; A = left; S = down; D = right')
+            combat.UserMovementOption(hero, world)
+        else:
+            encounter_RatKing()
 def Main():
     print('Welcome to Ratventure!')
     print('----------------------')
@@ -172,4 +197,19 @@ def Main():
                     exitGame()
             else:
                 encounter_Rat()
+        elif location == "K":
+            if ratKing.hp <= 0:
+                option = print_Menu(Menus.outdoor_Menu)
+                if option == 1:
+                    view_Character()
+                elif option == 2:
+                    print_Map()
+                elif option == 3:
+                    print_Map()
+                    combat.UserMovementOption(hero, world)
+                    rat.hp = 8
+                elif option == 4:
+                    exitGame()
+            else:
+                encounter_RatKing()
 Main()
