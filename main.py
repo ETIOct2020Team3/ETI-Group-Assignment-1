@@ -2,6 +2,7 @@ import Menus
 import combatMenuFunctions as combat
 import classes
 import sys
+import random
 
 try:
     import cPickle as pickle
@@ -14,7 +15,18 @@ def print_Menu(menu):
         print('{}) {}'.format(x + 1, menu[x]))
     option = int(input('Enter choice: '))
     return option    
-    
+
+def randomOrb(world):
+    townList=[]
+    for x in range(len(world.world_map)):
+        for y in range(len(world.world_map)):
+            if world.world_map[x][y]=="T":
+                townList.append((x,y))
+    townList.pop(0)
+    orbPosition = random.choice(townList)
+    world.world_map[orbPosition[0]][orbPosition[1]] ='T/O'
+    return(world)
+
 def print_Day():
     #Fetching and storing coordinates of hero
     pos_x = hero.positionX
@@ -51,6 +63,9 @@ def print_Map():
                 if x == hero.positionX and y == hero.positionY:
                     icon = 'H/K'
 
+            elif world.world_map[x][y] == "T/O":
+                icon = "T/O"
+
             elif x == hero.positionX and y == hero.positionY:
                 icon= ' H '
             #By default python will end each print with a new line
@@ -74,7 +89,7 @@ def rest():
     
 def new_Game():
     global world, hero, rat,ratKing
-    world = classes.World()
+    world = randomOrb(classes.World())
     hero = classes.Player()
     rat = classes.Rat()
     ratKing = classes.Rat_King()
