@@ -4,14 +4,7 @@ on:
     push:
       branches: [ main ] 
       
-runs-on: ubuntu-latest
-    steps:   
-      
-      vars_prompt:
-        - name: "release_version"
-        prompt: "Product release version"
-        default: "1.0"
-      
+runs-on: ubuntu-latest          
       -name: Send mail
       -uses: dawidd6/action-send-mail@v2
       with:
@@ -23,5 +16,5 @@ runs-on: ubuntu-latest
         # Literal body:
         body: Build release number ${{release_version}} of ETI Team 3 is completed successfully!
         # Read file contents as body:      
-        to: nurhannanis@gmail.com #ict.eti.consultants@gmail.com
-        from: nurhannanis@gmail.com # <user@example.com>  
+        to: ict.eti.consultants@gmail.com
+        from: nurhannanis@gmail.com # <user@example.com>
