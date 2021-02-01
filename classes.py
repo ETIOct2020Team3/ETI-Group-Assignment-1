@@ -13,14 +13,15 @@ class World:
 class Player:  
     def __init__(self):   
         self.name = 'The Hero'
-        self.damage = '2-4'
         self.minDamage = 2
         self.maxDamage = 4
+        self.damage = str(self.minDamage)+'-'+str(self.maxDamage)
         self.defence = 1
         self.hp = 20
         self.positionX = 0
         self.positionY = 0
         self.location = 'You are in a Town'
+        self.hasOrb = False
 
     def is_alive(self): 
         return self.hp > 0
@@ -40,6 +41,7 @@ class SavedPlayer:
         self.positionX = 0
         self.positionY = 0
         self.location = 'You are in a Town'
+        self.hasOrb = 'SavedData'
 
     def is_alive(self): 
         return self.hp > 0
@@ -63,4 +65,5 @@ class Rat_King(object):
         self.defence = 5
         self.hp = 25 
         self.location = 'b4'
+        self.isImmune = True
     

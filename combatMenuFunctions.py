@@ -44,52 +44,57 @@ def UserMovementOption(hero, world):
             else:
                 world.day += 1
                 
-def attack(rat, Player):
-    ratDamage = random.randint(Player.minDamage,Player.maxDamage)
-    playerDamage = random.randint(rat.damage_min,rat.damage_max)
-    ratDefenceLeft = rat.defence - playerDamage
-    playerDefenceLeft = Player.defence - ratDamage
+def attack(target, Player):
+    playerDamage = random.randint(Player.minDamage,Player.maxDamage)
+    targetDamage = random.randint(target.damage_min,target.damage_max)
+    targetDefenceLeft = target.defence - playerDamage
+    playerDefenceLeft = Player.defence - targetDamage
     
-    if ratDefenceLeft > 0:  
-        rat.defence = ratDefenceLeft
+    if targetDefenceLeft > 0:  
+        rat.defence = targetDefenceLeft
         print("You deal {} damage to the rat".format(playerDamage))
-        print("Ouch! The rat hit you for {} damage!".format(ratDamage))
+        print("Ouch! The rat hit you for {} damage!".format(targetDamage))
         if playerDefenceLeft > 0:
             print("You have {}HP left.".format(Player.hp))
-            print("Encounter! - {}".format(rat.name))
-            print("Damage: {}".format(rat.damage))
-            print("Defence: {}".format(rat.defence))
-            print("HP: {}".format(rat.hp))
+            print("Encounter! - {}".format(target.name))
+            print("Damage: {}".format(target.damage))
+            print("Defence: {}".format(target.defence))
+            print("HP: {}".format(target.hp))
+            print("")
+
         else:
-            Player.hp = Player.hp - ratDamage
+            Player.hp = Player.hp - targetDamage
             print("You have {}HP left.".format(Player.hp))
             print("Encounter! - {}".format(rat.name))
-            print("Damage: {}".format(rat.damage))
-            print("Defence: {}".format(rat.defence))
-            print("HP: {}".format(rat.hp))
+            print("Damage: {}".format(target.damage))
+            print("Defence: {}".format(target.defence))
+            print("HP: {}".format(target.hp))
+            print("")
             
     else:
-        rat.hp = rat.hp - playerDamage
-        if rat.hp > 0:
+        target.hp = target.hp - playerDamage
+        if target.hp > 0:
             print("You deal {} damage to the rat".format(playerDamage))
-            print("Ouch! The rat hit you for {} damage!".format(ratDamage))
+            print("Ouch! The rat hit you for {} damage!".format(targetDamage))
             if playerDefenceLeft > 0:
                 print("You have {}HP left.".format(Player.hp))
-                print("Encounter! - {}".format(rat.name))
-                print("Damage: {}".format(rat.damage))
-                print("Defence: {}".format(rat.defence))
-                print("HP: {}".format(rat.hp))
+                print("Encounter! - {}".format(target.name))
+                print("Damage: {}".format(target.damage))
+                print("Defence: {}".format(target.defence))
+                print("HP: {}".format(target.hp))
+                print("")
             else:
-                Player.hp = Player.hp - ratDamage
+                Player.hp = Player.hp - targetDamage
                 print("You have {}HP left.".format(Player.hp))
-                print("Encounter! - {}".format(rat.name))
-                print("Damage: {}".format(rat.damage))
-                print("Defence: {}".format(rat.defence))
-                print("HP: {}".format(rat.hp))
+                print("Encounter! - {}".format(target.name))
+                print("Damage: {}".format(target.damage))
+                print("Defence: {}".format(target.defence))
+                print("HP: {}".format(target.hp))
+                print("")
                 if Player.hp <= 0:
                     print("You are dead. Game is over.")
         else:
-            print("Yay you killed the {}!".format(rat.name))
+            print("Yay you killed the {}!".format(target.name))
 
 
     

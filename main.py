@@ -99,6 +99,7 @@ def save_Game():
     pickle.dump(world, output, -1)
     pickle.dump(hero, output, -1)
     pickle.dump(rat, output, -1)
+    pickle.dump(ratKing,output,-1)
     output.close()
     print('Game saved.')
     
@@ -134,7 +135,7 @@ def encounter_Rat():
             encounter_Rat()
             
 def encounter_RatKing():
-    if rat.hp>0:
+    if ratKing.hp>0:
         print('Encounter! - {}'.format(ratKing.name))
         print('Damage: {},{}'.format(ratKing.damage_min, ratKing.damage_max))
         print('Defence: {}'.format(ratKing.defence))
@@ -142,7 +143,7 @@ def encounter_RatKing():
         option = print_Menu(Menus.combat_Menu)
     
     if option == 1:
-        combat.attack(ratKing, hero)
+        combat.attack(ratKing, hero)            
         
     elif option == 2:
         option = print_Menu(Menus.outdoor_Menu)
