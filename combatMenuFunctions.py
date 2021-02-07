@@ -50,30 +50,10 @@ def attack(target, Player):
     targetDefenceLeft = target.defence - playerDamage
     playerDefenceLeft = Player.defence - targetDamage
     
-    if targetDefenceLeft > 0:  
-        rat.defence = targetDefenceLeft
-        print("You deal {} damage to the rat".format(playerDamage))
-        print("Ouch! The rat hit you for {} damage!".format(targetDamage))
-        if playerDefenceLeft > 0:
-            print("You have {}HP left.".format(Player.hp))
-            print("Encounter! - {}".format(target.name))
-            print("Damage: {}".format(target.damage))
-            print("Defence: {}".format(target.defence))
-            print("HP: {}".format(target.hp))
-            print("")
+    if target.name == "Rat":
 
-        else:
-            Player.hp = Player.hp - targetDamage
-            print("You have {}HP left.".format(Player.hp))
-            print("Encounter! - {}".format(rat.name))
-            print("Damage: {}".format(target.damage))
-            print("Defence: {}".format(target.defence))
-            print("HP: {}".format(target.hp))
-            print("")
-            
-    else:
-        target.hp = target.hp - playerDamage
-        if target.hp > 0:
+        if targetDefenceLeft > 0:  
+            target.defence = targetDefenceLeft
             print("You deal {} damage to the rat".format(playerDamage))
             print("Ouch! The rat hit you for {} damage!".format(targetDamage))
             if playerDefenceLeft > 0:
@@ -86,15 +66,45 @@ def attack(target, Player):
             else:
                 Player.hp = Player.hp - targetDamage
                 print("You have {}HP left.".format(Player.hp))
-                print("Encounter! - {}".format(target.name))
+                print("Encounter! - {}".format(rat.name))
                 print("Damage: {}".format(target.damage))
                 print("Defence: {}".format(target.defence))
                 print("HP: {}".format(target.hp))
                 print("")
-                if Player.hp <= 0:
-                    print("You are dead. Game is over.")
+                
         else:
-            print("Yay you killed the {}!".format(target.name))
+            target.hp = target.hp - playerDamage
+            if target.hp > 0:
+                print("You deal {} damage to the rat".format(playerDamage))
+                print("Ouch! The rat hit you for {} damage!".format(targetDamage))
+                if playerDefenceLeft > 0:
+                    print("You have {}HP left.".format(Player.hp))
+                    print("Encounter! - {}".format(target.name))
+                    print("Damage: {}".format(target.damage))
+                    print("Defence: {}".format(target.defence))
+                    print("HP: {}".format(target.hp))
+                    print("")
+                else:
+                    Player.hp = Player.hp - targetDamage
+                    print("You have {}HP left.".format(Player.hp))
+                    print("Encounter! - {}".format(target.name))
+                    print("Damage: {}".format(target.damage))
+                    print("Defence: {}".format(target.defence))
+                    print("HP: {}".format(target.hp))
+                    print("")
+                    if Player.hp <= 0:
+                        print("You are dead. Game is over.")
+            else:
+                print("Yay you killed the {}!".format(target.name))
+    else:
+        if Player.hasOrb == False:
+            
+            print("Rat King is immune to attacks when you don't have the Orb!")
+            print("Ouch! The rat hit you for {} damage!".format(targetDamage))
+
+
+
+                
 
 
     
