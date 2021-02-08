@@ -212,4 +212,5 @@ def Main():
                     exitGame()
             else:
                 encounter_RatKing()
-Main()
+if __name__ == "__main__":
+   Main()
