@@ -17,7 +17,7 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
           # Literal body:
-          body: Build release number  of ETI Team 3 is completed successfully
+          body: Build release number  of ETI Team 3 is completed successfully!
           # Read file contents as body:      
           to: harithmdnoor@gmail.com
           from: nurhannanis@gmail.com # <user@example.com>
