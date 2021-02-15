@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from unittest import mock 
 import main as main
 import combatMenuFunctions as combat
@@ -13,7 +14,7 @@ class test_harith(unittest.TestCase):
             if e.code == 0:
                 passed = True
 
-        self.assertEqual(passed,True) 
+        assert(passed==True) 
 
     def test_move_pass(self):
         original_input = mock.builtins.input
@@ -21,7 +22,7 @@ class test_harith(unittest.TestCase):
         hero = classes.Player()
         world = classes.World()
         combat.UserMovementOption(hero,world)
-        self.assertEqual(world.world_map[hero.positionX][hero.positionY]," ")
+        assert(world.world_map[hero.positionX][hero.positionY]==" ")
         mock.builtins.input = original_input
 
 
@@ -30,7 +31,7 @@ class test_harith(unittest.TestCase):
         hero=classes.Player()
         ratStartingHP = rat.hp
         combat.attack(rat,hero)
-        self.assertGreater(ratStartingHP,rat.hp)
+        assert(ratStartingHP>rat.hp)
 
             
 if __name__ == '__main__':
