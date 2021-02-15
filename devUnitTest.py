@@ -25,7 +25,6 @@ class test_harith(unittest.TestCase):
         mock.builtins.input = original_input
 
 
-
     def test_attack_pass(self):
         rat= classes.Rat()
         hero=classes.Player()
