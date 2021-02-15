@@ -69,22 +69,20 @@ def attack(enemy, player):
     print("\nYou deal {} damage to the {}".format(playerDamage, enemy.name))
     
     if enemy.hp > 0: 
-        print("Ouch! The {} hit you for {} damage!".format(enemyDamage, enemy.name))
+        print("Ouch! The {} hit you for {} damage!".format(enemy.name, enemyDamage))
         if player.hp > 0:
             player.hp = player.hp - enemyDamage
             print("You have {}HP left.".format(player.hp))
-        else:
-            print("You have {}HP left.".format(player.hp))
+                
+    if player.hp <= 0:
             print("\nOh dear, you are dead!")
             print("Game over.")
             sys.exit(0)
-                
-    if player.hp <= 0:
+            
+    if enemy.hp <=0:
         print("\nYay you killed the {}!".format(enemy.name))
 
 
-    else:
-        print("Yay! You killed the {}".format(enemy.name))
 
 
    
