@@ -12,7 +12,7 @@ def test_exit_pass():
         if e.code == 0:
             passed = True
 
-    assert passed==True
+    assert passed==False
 
 def test_move_pass():
     original_input = mock.builtins.input
