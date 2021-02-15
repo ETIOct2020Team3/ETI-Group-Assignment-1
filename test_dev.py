@@ -11,8 +11,7 @@ def test_exit_pass():
     except SystemExit as e: 
         if e.code == 0:
             passed = True
-
-    assert passed==False
+    assert passed==True
 
 def test_move_pass():
     original_input = mock.builtins.input
