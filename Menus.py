@@ -19,5 +19,4 @@ outdoor_Menu = ["View Character",\
              "Exit Game"]
 
 combat_Menu = ["Attack",\
-             "Run"
-               ]
+             "Run"]
