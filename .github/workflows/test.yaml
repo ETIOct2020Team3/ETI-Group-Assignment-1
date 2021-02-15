@@ -52,5 +52,5 @@ jobs:
       if: github.event_name == 'pull_request' && github.event.action == 'opened'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_PROJECT_URL: https://github.com/ETIOct2020Team3/Week-7-Prac
+        GITHUB_PROJECT_URL: https://github.com/ETIOct2020Team3/ETI-Group-Assignment-1
         GITHUB_PROJECT_COLUMN_NAME: To do
