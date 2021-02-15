@@ -69,7 +69,7 @@ def resume_Game():
 ###################################################################
 #Main Menu Functions
 ###################################################################
-def view_Character():
+def view_Character(hero):
     #Printing hero stats
     if hero.hasOrb == True:
         print("\nYou hold the orb of power!")
@@ -78,7 +78,11 @@ def view_Character():
     print("Defence : {}".format(hero.defence))
     print("HP : {}".format(hero.hp))
     
-def print_Map():
+def exitGame():
+    sys.exit(0)
+
+
+def print_Map(hero,world):
     #Iterating through world object's worldmap nested list
     print('')
     for x in range(8):
@@ -110,7 +114,7 @@ def print_Map():
     #Print a closing footer
     print("+---+---+---+---+---+---+---+---+")
 
-def rest():
+def rest(hero,world):
     world.day += 1
     hero.hp = 20
     print('\nYou are fully healed.')
@@ -126,7 +130,7 @@ def save_Game():
 ###################################################################
 #Combat Functions
 ###################################################################
-def encounter_Rat():
+def encounter_Rat(hero,rat):
     if rat.hp>0:
         print('\nEncounter! - {}'.format(rat.name))
         print('Damage: {},{}'.format(rat.minDamage, rat.maxDamage))
@@ -142,14 +146,14 @@ def encounter_Rat():
         rat.hp = 8
         option = print_Menu(menus.outdoor_Menu)
         if option == '3':
-            print_Map()
+            print_Map(hero,world)
             print('W = up; A = left; S = down; D = right')
             combat.UserMovementOption(hero, world)
         elif option == '4':
             sys.exit(0)
         #If any other action than exiting game or moving
         else:
-            encounter_Rat()
+            encounter_Rat(hero,rat)
     else:
         print('Invalid option.\n')
         
@@ -169,7 +173,7 @@ def encounter_ratKing():
         ratKing.hp = 25
         option = print_Menu(menus.outdoor_Menu)
         if option == '3':
-            print_Map()
+            print_Map(hero,world)
             print('W = up; A = left; S = down; D = right')
             combat.UserMovementOption(hero, world)
         elif option == '4':
@@ -191,7 +195,7 @@ def main():
     elif start_option == '2':
         resume_Game()
     elif start_option == '3':
-        sys.exit(0)
+        exitGame()
     else:
         print('Invalid option.\n')
         main()
@@ -204,20 +208,20 @@ def main():
         if location == "T":
             option = print_Menu(menus.town_Menu)
             if option == '1':
-                view_Character()
+                view_Character(hero)
             elif option == '2':
-                print_Map()
+                print_Map(hero,world)
             elif option == '3':
-                print_Map()
+                print_Map(hero,world)
                 print('W = up; A = left; S = down; D = right')
                 combat.UserMovementOption(hero, world)
             elif option == '4':
-                rest()
+                rest(hero,world)
             elif option == '5':
                 save_Game()
             elif option == '6':
                 condition = False
-                sys.exit(0)
+                exitGame()
             else:
                 print('Invalid option.\n')
 
@@ -226,17 +230,17 @@ def main():
             if rat.hp <= 0:
                 option = print_Menu(menus.outdoor_Menu)
                 if option == '1':
-                    view_Character()
+                    view_Character(hero)
                 elif option == '2':
-                    print_Map()
+                    print_Map(hero,world)
                 elif option == '3':
-                    print_Map()
+                    print_Map(hero,world)
                     combat.UserMovementOption(hero, world)
                     rat.hp = 8
                 elif option == '4':
                     sys.exit(0)
             else:
-                encounter_Rat()
+                encounter_Rat(hero,rat)
                 
         #Available options when the player finds the town with the orb
         elif location == "T/O":
@@ -257,15 +261,15 @@ def main():
             
             option = print_Menu(menus.town_Menu)
             if option == '1':
-                view_Character()
+                view_Character(hero)
             elif option == '2':
-                print_Map()
+                print_Map(hero,world)
             elif option == '3':
-                print_Map()
+                print_Map(hero,world)
                 print('W = up; A = left; S = down; D = right')
                 combat.UserMovementOption(hero, world)
             elif option == '4':
-                rest()
+                rest(hero,world)
             elif option == '5':
                 save_Game()
             elif option == '6':
@@ -280,11 +284,11 @@ def main():
                 print("You have already slain the Rat King!")
                 option = print_Menu(menus.outdoor_Menu)
                 if option == '1':
-                    view_Character()
+                    view_Character(hero)
                 elif option == '2':
-                    print_Map()
+                    print_Map(hero,world)
                 elif option == '3':
-                    print_Map()
+                    print_Map(hero,world)
                     combat.UserMovementOption(hero, world)
                     rat.hp = 8
                 elif option == '4':
@@ -295,4 +299,5 @@ def main():
             print("\n Error. This you have somehow moved to an invalid location.")
             sys.exit(0)
         
-main()
+if __name__ == "__main__":
+   main()
