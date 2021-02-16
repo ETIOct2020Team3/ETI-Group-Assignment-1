@@ -22,7 +22,7 @@ class Player:
         self.positionY = 0
         self.location = 'You are in a Town'
         self.hasOrb = False
-        
+
 class Rat(object): 
     def __init__(self):
         self.name = 'Rat'

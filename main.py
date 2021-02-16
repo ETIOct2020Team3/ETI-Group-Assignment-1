@@ -49,6 +49,25 @@ def randomOrb(world):
     orbPosition = random.choice(townList)
     world.world_Map[orbPosition[0]][orbPosition[1]] ='T/O'
     return(world)
+
+def getOrb(hero):
+    #Player discovering the orb of power
+    print("You found the Orb of Power!")
+    print("Your attack increases by 5!")
+    print("Your defence increases by 5!")
+            
+    #Player getting the boosted stats
+    hero.damage = '7-9'
+    hero.minDamage = hero.minDamage + 5
+    hero.maxDamage = hero.maxDamage + 5
+    hero.defence = hero.defence + 5
+
+    #Setting hasOrb attribute to true to denote that the hero has the orb
+    hero.hasOrb = True
+    
+    #Setting the town back to location tag 'T'
+    world.world_Map[hero.positionX][hero.positionY] = 'T'
+    
 ###################################################################
 #Start Menu Functions
 ###################################################################
@@ -58,6 +77,8 @@ def new_Game():
     hero = classes.Player()
     rat = classes.Rat()
     ratKing = classes.Rat_King()
+    #For testing
+    return (world,hero,rat,ratKing)
 
 def resume_Game():
     input = open('Save.txt', 'rb')
@@ -66,6 +87,9 @@ def resume_Game():
     hero = pickle.load(input)
     rat = pickle.load(input)
     ratKing = pickle.load(input)
+    #For testing
+    return (world,hero,rat,ratKing)
+
 ###################################################################
 #Main Menu Functions
 ###################################################################
@@ -119,7 +143,7 @@ def rest(hero,world):
     hero.hp = 20
     print('\nYou are fully healed.')
 
-def save_Game():
+def save_Game(world, hero, rat, ratKing):
     output = open('Save.txt','wb')
     pickle.dump(world, output, -1)
     pickle.dump(hero, output, -1)
@@ -218,7 +242,7 @@ def main():
             elif option == '4':
                 rest(hero,world)
             elif option == '5':
-                save_Game()
+                save_Game(world,hero,rat,ratKing)
             elif option == '6':
                 condition = False
                 exitGame()
@@ -244,20 +268,8 @@ def main():
                 
         #Available options when the player finds the town with the orb
         elif location == "T/O":
-            #Player discovering the orb of power
-            print("You found the Orb of Power!")
-            print("Your attack increases by 5!")
-            print("Your defence increases by 5!")
-            #Player getting the boosted stats
-            hero.damage = '7-9'
-            hero.minDamage = hero.minDamage + 5
-            hero.maxDamage = hero.maxDamage + 5
-            hero.defence = hero.defence + 5
-            
-            #Setting the town back to location tag 'T'
-            world.world_Map[hero.positionX][hero.positionY] = 'T'
-            #Setting hasOrb attribute to true to denote that the hero has the orb
-            hero.hasOrb = True
+            #Call get orb function
+            getOrb(hero)
             
             option = print_Menu(menus.town_Menu)
             if option == '1':
@@ -271,7 +283,7 @@ def main():
             elif option == '4':
                 rest(hero,world)
             elif option == '5':
-                save_Game()
+                save_Game(world,hero,rat,ratKing)
             elif option == '6':
                 condition = False
                 sys.exit(0)

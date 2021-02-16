@@ -64,7 +64,7 @@ def attack(enemy, player):
     if enemy.name == 'Rat King' and player.hasOrb == False:
         print('You do not have the orb of power! The Rat King is immune to your attacks.')
         playerDamage = 0
-        
+
     enemy.hp = enemy.hp - playerDamage
     print("\nYou deal {} damage to the {}".format(playerDamage, enemy.name))
     
