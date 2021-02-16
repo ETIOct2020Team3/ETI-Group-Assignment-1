@@ -7,15 +7,7 @@ import sys
 import menus
 from unittest import mock
 from _pytest.monkeypatch import MonkeyPatch
-def test_exit_pass():
-    passed = False
-    try:
-        sys.exit(0)
-    except SystemExit as e:
-        if e.code == 0:
-            passed = True
 
-    assert passed
 def test_new1():
     original_input = mock.builtins.input
     mock.builtins.input = lambda _: 1

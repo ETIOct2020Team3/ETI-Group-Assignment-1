@@ -32,5 +32,5 @@ jobs:
         # Literal body:
         body: ${{env.RELEASE_VERSION}} of ETI Team 3 is completed successfully
         # Read file contents as body:      
-        to: harithmdnoor@gmail.com
+        to:  ict.eti.consultants@gmail.com
         from: nurhannanis@gmail.com # <user@example.com>
