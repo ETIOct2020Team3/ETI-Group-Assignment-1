@@ -7,6 +7,7 @@ import combatFunctions as combat
 import classes as classes
 import os.path
 
+#Passing
 def test_random_orb_pass():
     world = classes.World()
     main.randomOrb(world)
@@ -113,4 +114,39 @@ test_resume_game_pass()
 test_save_game_pass()
 test_rat_king_immunity_pass()
 test_rat_king_broken_immunity_pass()
+
+
+#Fails
+def test_rat_king_immunity_fail():
+    print('')
+    print ('Failing test of rat king immunity')
+    world = classes.World()
+    hero = classes.Player()
+    rat = classes.Rat()
+    ratKing = classes.Rat_King()
+
+    hero.hasOrb = False
+
+    combat.attack(ratKing, hero)
+
+    print('Rat king hp: {}'.format(ratKing.hp))
+    
+    assert ratKing.hp < 25
+    
+def test_rat_king_broken_immunity_fail():
+    print('')
+    print ('Failing test case to see if hero can damage rat king without orb')
+    world = classes.World()
+    hero = classes.Player()
+    rat = classes.Rat()
+    ratKing = classes.Rat_King()
+    
+    combat.attack(ratKing, hero)
+
+    print('Rat king hp: {}'.format(ratKing.hp))
+    
+    assert ratKing.hp < 25
+
+test_rat_king_immunity_fail()
+test_rat_king_broken_immunity_fail()
 
