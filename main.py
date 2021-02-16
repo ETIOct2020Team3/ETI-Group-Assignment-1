@@ -157,7 +157,7 @@ def encounter_Rat(hero,rat):
     else:
         print('Invalid option.\n')
         
-def encounter_ratKing():
+def encounter_ratKing(hero,ratKing):
     if ratKing.hp>0:
         print('Encounter! - {}'.format(ratKing.name))
         print('Damage: {},{}'.format(ratKing.minDamage, ratKing.maxDamage))
@@ -180,7 +180,7 @@ def encounter_ratKing():
             sys.exit(0)
         #If any other action than exiting game or moving
         else:
-            encounter_ratKing()        
+            encounter_ratKing(hero,ratKing)        
 ###################################################################
 #Main Function
 ###################################################################
@@ -294,7 +294,7 @@ def main():
                 elif option == '4':
                     sys.exit(0)
             else:
-                encounter_ratKing()
+                encounter_ratKing(hero,ratKing)
         else:
             print("\n Error. This you have somehow moved to an invalid location.")
             sys.exit(0)
