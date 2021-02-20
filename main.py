@@ -138,10 +138,26 @@ def print_Map(hero,world):
     #Print a closing footer
     print("+---+---+---+---+---+---+---+---+")
 
+def resetHeroHp(hero):
+    hero.hp=20
+    return hero
+
+def addDayByOne(world):
+    world.day+=1
+    return world
+
 def rest(hero,world):
-    world.day += 1
-    hero.hp = 20
-    print('\nYou are fully healed.')
+    if hero.name=="The Hero" and world.name=="world":
+        if hero.hp>0 and world.day>0:
+            world = addDayByOne(world)
+            hero = resetHeroHp(hero)
+            print('\nYou are fully healed.')
+        elif hero.hp<=0:
+            print('\nCant Rest when dead.')
+        elif world.day<=0:
+            print("Error occured: Invalid day")
+    else:
+        print("Error occured: Wrong object entered")
 
 def save_Game(world, hero, rat, ratKing):
     output = open('Save.txt','wb')
