@@ -163,7 +163,6 @@ def test_print_map_failing_pass(mock_stdout):
 #failing test case fail
 @patch('builtins.print')
 def test_print_map_failing_fail(mock_stdout):
-    mock.builtins.input = lambda _: "D"
     world = classes.World()
     hero = classes.Player()
     world.world_Map = None
