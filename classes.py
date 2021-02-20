@@ -1,5 +1,6 @@
 class World:
     def __init__(self):
+        self.name ="world"
         self.world_Map = [['T', ' ', ' ', ' ', ' ', ' ', ' ', ' '],\
                      [' ', ' ', ' ', 'T', ' ', ' ', ' ', ' '],\
                      [' ', ' ', ' ', ' ', ' ', 'T', ' ', ' '],\
