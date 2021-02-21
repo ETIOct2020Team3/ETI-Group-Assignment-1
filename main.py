@@ -94,7 +94,8 @@ def resume_Game():
 #Main Menu Functions
 ###################################################################
 def view_Character(hero):
-
+    if hero.hasOrb == True:
+        print("\nYou hold the orb of power!")
     print("\nName : {}".format(hero.name))
     print("Damage : {}".format(hero.damage))
     print("Defence : {}".format(hero.defence))
