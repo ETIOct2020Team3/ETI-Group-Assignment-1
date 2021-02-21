@@ -143,7 +143,8 @@ test_attackratKing_failing_pass()
 def test_view_Character_passing_pass(mock_stdout):
     world = classes.World()
     hero = classes.Player()
-    main.view_Character(hero)
+    if world.world_Map[hero.positionX][hero.positionY] == 'T':
+        main.view_Character(hero)
         
     assert mock_stdout.mock_calls == [call('\nName : {}'.format(hero.name)),call("Damage : {}".format(hero.damage)),call("Defence : {}".format(hero.defence)),call("HP : {}".format(hero.hp))]
 
@@ -151,8 +152,9 @@ def test_view_Character_passing_pass(mock_stdout):
 def test_view_Character_passing_fail(mock_stdout):
     world = classes.World()
     hero = classes.Player()
-    hero.hasOrb = True
-    main.view_Character(hero)
+    if world.world_Map[hero.positionX][hero.positionY] == 'T':
+        hero.hasOrb = True
+        main.view_Character(hero)
 
     #Fails because its asserting that function will not print a statement
     #That the hero has the orb, while it does
@@ -163,8 +165,9 @@ def test_view_Character_passing_fail(mock_stdout):
 def test_view_Character_failing_fail(mock_stdout):
     world = classes.World()
     hero = classes.Player()
-    hero.hasOrb = False
-    main.view_Character(hero)
+    if world.world_Map[hero.positionX][hero.positionY] == 'T':
+        hero.hasOrb = False
+        main.view_Character(hero)
 
     #Fails because its asserting that function will print a statement
     #That the hero has the orb, while it doesnt
@@ -174,8 +177,9 @@ def test_view_Character_failing_fail(mock_stdout):
 def test_view_Character_failing_pass(mock_stdout):
     world = classes.World()
     hero = classes.Player()
-    hero.hasOrb = True
-    main.view_Character(hero)
+    if world.world_Map[hero.positionX][hero.positionY] == 'T':
+        hero.hasOrb = True
+        main.view_Character(hero)
     assert mock_stdout.mock_calls == [call('\nYou hold the orb of power!'),call('\nName : {}'.format(hero.name)),call("Damage : {}".format(hero.damage)),call("Defence : {}".format(hero.defence)),call("HP : {}".format(hero.hp))]
 
 test_view_Character_passing_pass()
