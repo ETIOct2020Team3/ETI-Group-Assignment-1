@@ -53,3 +53,160 @@ def test_rest_failing_fail(mock_stdout):
     main.rest(temphero,tempWorldDay)
     assert mock_stdout.mock_calls == [call("Cant Rest when dead")]
 
+    #passing test case pass
+@patch('builtins.print')
+def test_print_map_passing_pass(mock_stdout):
+    world = classes.World()
+    hero = classes.Player()
+    main.print_Map(hero,world)
+    assert mock_stdout.mock_calls ==[
+            call(''),call('+---+---+---+---+---+---+---+---+'),
+            call('|H/T', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('| T ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('| T ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('| T ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('| T ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''), call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('| K ', end=''), 
+            call('|'), call('+---+---+---+---+---+---+---+---+')]
+
+#passing test case fail
+@patch('builtins.print')
+def test_print_map_passing_fail(mock_stdout):
+    original_input = mock.builtins.input
+    mock.builtins.input = lambda _: "S"
+    world = classes.World()
+    hero = classes.Player()
+    combat.UserMovementOption(hero,world)
+    main.print_Map(hero,world)
+    assert mock_stdout.mock_calls ==[
+            call(''),call('+---+---+---+---+---+---+---+---+'),
+            call('|H/T', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('| T ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('| T ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('| T ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('| T ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''), call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('| K ', end=''), 
+            call('|'), call('+---+---+---+---+---+---+---+---+')]
+
+#failing test case pass
+@patch('builtins.print')
+def test_print_map_failing_pass(mock_stdout):
+    world = classes.Rat()
+    hero = classes.Player()
+    main.print_Map(hero,world)
+    assert mock_stdout.mock_calls ==[call('Error occured: Wrong object entered')]
+
+#failing test case fail
+@patch('builtins.print')
+def test_print_map_failing_fail(mock_stdout):
+    world = classes.World()
+    hero = classes.Player()
+    world.world_Map = None
+    main.print_Map(hero,world)
+    assert mock_stdout.mock_calls ==[
+            call(''),call('+---+---+---+---+---+---+---+---+'),
+            call('|H/T', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('| T ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('| T ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('| T ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('| T ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('|   ', end=''),
+            call('|'),
+            call('+---+---+---+---+---+---+---+---+'),
+            call('|   ', end=''),call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''), call('|   ', end=''),call('|   ', end=''),
+            call('|   ', end=''),call('| K ', end=''), 
+            call('|'), call('+---+---+---+---+---+---+---+---+')]
+
+

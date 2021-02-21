@@ -107,36 +107,42 @@ def exitGame():
 
 
 def print_Map(hero,world):
-    #Iterating through world object's worldmap nested list
-    print('')
-    for x in range(8):
-        #Print a header for each nested list that exists
-        print("+---+---+---+---+---+---+---+---+")
-        for y in range(8):
-            #Blank variable to store the Town, Orb or Hero letter icons
-            icon= "   "
-            #If statements to store the letter icons that is in the current world.worldmap nested list index
-            if world.world_Map[x][y] == 'T':
-                icon = ' T '
-                if x == hero.positionX and y == hero.positionY:
-                    icon = 'H/T'
+    if hero.name=="The Hero" and world.name=="world":
+        if world.world_Map!= None:
+            #Iterating through world object's worldmap nested list
+            print('')
+            for x in range(8):
+                #Print a header for each nested list that exists
+                print("+---+---+---+---+---+---+---+---+")
+                for y in range(8):
+                    #Blank variable to store the Town, Orb or Hero letter icons
+                    icon= "   "
+                    #If statements to store the letter icons that is in the current world.worldmap nested list index
+                    if world.world_Map[x][y] == 'T':
+                        icon = ' T '
+                        if x == hero.positionX and y == hero.positionY:
+                            icon = 'H/T'
 
-            elif world.world_Map[x][y] == 'K':
-                icon = ' K '
-                if x == hero.positionX and y == hero.positionY:
-                    icon = 'H/K'
+                    elif world.world_Map[x][y] == 'K':
+                        icon = ' K '
+                        if x == hero.positionX and y == hero.positionY:
+                            icon = 'H/K'
 
-            elif world.world_Map[x][y] == "T/O":
-                icon = "T/O"
+                    elif world.world_Map[x][y] == "T/O":
+                        icon = "T/O"
 
-            elif x == hero.positionX and y == hero.positionY:
-                icon= ' H '
-            #By default python will end each print with a new line
-            #end='' replaces the default parameter of '\n' so it does not end with a new line
-            print("|{}".format(icon), end='')
-        print("|")
-    #Print a closing footer
-    print("+---+---+---+---+---+---+---+---+")
+                    elif x == hero.positionX and y == hero.positionY:
+                        icon= ' H '
+                    #By default python will end each print with a new line
+                    #end='' replaces the default parameter of '\n' so it does not end with a new line
+                    print("|{}".format(icon), end='')
+                print("|")
+            #Print a closing footer
+            print("+---+---+---+---+---+---+---+---+")
+        else:
+            print("Error occured: No map detected")
+    else:
+        print("Error occured: Wrong object entered")
 
 def resetHeroHp(hero):
     hero.hp=20
