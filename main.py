@@ -50,7 +50,7 @@ def randomOrb(world):
     world.world_Map[orbPosition[0]][orbPosition[1]] ='T/O'
     return(world)
 
-def getOrb(hero):
+def getOrb(world, hero):
     #Player discovering the orb of power
     print("You found the Orb of Power!")
     print("Your attack increases by 5!")
@@ -94,9 +94,7 @@ def resume_Game():
 #Main Menu Functions
 ###################################################################
 def view_Character(hero):
-    #Printing hero stats
-    if hero.hasOrb == True:
-        print("\nYou hold the orb of power!")
+
     print("\nName : {}".format(hero.name))
     print("Damage : {}".format(hero.damage))
     print("Defence : {}".format(hero.defence))
@@ -285,13 +283,15 @@ def main():
                     rat.hp = 8
                 elif option == '4':
                     sys.exit(0)
+                else:
+                    print('Invalid option.\n')
             else:
                 encounter_Rat(hero,rat)
                 
         #Available options when the player finds the town with the orb
         elif location == "T/O":
             #Call get orb function
-            getOrb(hero)
+            getOrb(world, hero)
             
             option = print_Menu(menus.town_Menu)
             if option == '1':

@@ -276,6 +276,3 @@ def test_encounter_ratKing_without_orb_fail(mock_stdout):
     main.encounter_ratKing(hero,ratKing)
     assert ratKing.hp!=ratKingOriginalHP
     assert hero.hp==heroOriginalHP
-
-
-
